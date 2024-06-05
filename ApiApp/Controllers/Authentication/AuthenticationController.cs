@@ -4,6 +4,7 @@ using ApiApp.Services;
 using ApiApp.Services.AuthServices;
 using Entity.Models.ModelV2;
 using Microsoft.AspNetCore.Mvc;
+using SpireDoclibrary.Servicer;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 
@@ -26,9 +27,10 @@ namespace ApiApp.Controllers.Authentication
         }
         // GET: api/<AuthenticationController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            SpireDocx document =  new SpireDocx();
+            return File(document.GetDocument(), "application/pdf", "HeaderExample.pdf");
         }
 
         // GET api/<AuthenticationController>/5
